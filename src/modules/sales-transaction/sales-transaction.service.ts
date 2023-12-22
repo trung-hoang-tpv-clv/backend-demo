@@ -112,14 +112,14 @@ export class SalesTransactionService {
       );
     }
 
-    const [data, total] = await Promise.all([
+    const [items, total] = await Promise.all([
       queryBuilder.limit(limit).offset(offset).getRawMany(),
       queryBuilder.getCount(),
     ]);
 
     return plainToInstance(GetSalesTransactionListResDto, {
       total,
-      data,
+      items,
     });
   }
 

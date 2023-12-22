@@ -66,7 +66,7 @@ export class GetSalesTransactionItemDto {
 export class GetSalesTransactionListResDto {
   @Expose()
   @Type(() => GetSalesTransactionItemDto)
-  data!: GetSalesTransactionItemDto[];
+  items!: GetSalesTransactionItemDto[];
 
   @Expose()
   @Type(() => Number)
