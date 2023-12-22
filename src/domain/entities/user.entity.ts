@@ -2,7 +2,7 @@ import { PrimaryGeneratedColumn, Entity, Column, Index } from 'typeorm';
 import { BaseEntity } from './base.entity';
 
 @Entity()
-@Index(["firstName", "lastName"])
+@Index(['firstName', 'lastName'])
 export class User extends BaseEntity {
   constructor(partial: Partial<User>) {
     super();

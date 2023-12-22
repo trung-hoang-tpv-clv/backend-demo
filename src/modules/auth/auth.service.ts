@@ -46,6 +46,7 @@ export class AuthService {
 
     return plainToInstance(SignInResDto, {
       ...user,
+      fullName: `${user.firstName} ${user.lastName}`,
       accessToken,
     });
   }
@@ -74,8 +75,6 @@ export class AuthService {
       username: request.username,
     });
 
-    await this.userRepository.insert(user);
-
     const accessToken = await this.jwtService.signAsync(
       JSON.stringify({
         sub: user.userId,
@@ -87,8 +86,11 @@ export class AuthService {
       { secret: process.env.SECRET_KEY },
     );
 
+    await this.userRepository.insert(user);
+
     return plainToInstance(SignUpResDto, {
       ...user,
+      fullName: `${user.firstName} ${user.lastName}`,
       accessToken,
     });
   }
