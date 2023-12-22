@@ -1,0 +1,27 @@
+version: '3.1'
+
+services:
+
+  mysql_db:
+    image: mysql:8
+    container_name: mysql_db
+    restart: always
+    environment:
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123
+      MYSQL_DATABASE: auth_backend_demo
+      MYSQL_ROOT_PASSWORD: 123
+    ports:
+      - 3306:3306
+
+  auth_backend:
+    build:
+      context: ./
+      dockerfile: ./Dockerfile
+    env_file: .env.docker
+    restart: always
+    container_name: auth_backend
+    ports:
+      - "3001:3001"
+    links:
+     - "mysql_db"
