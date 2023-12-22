@@ -9,7 +9,7 @@ services:
     environment:
       MYSQL_USER: root
       MYSQL_PASSWORD: 123
-      MYSQL_DATABASE: auth_backend_demo
+      MYSQL_DATABASE: backend_demo
       MYSQL_ROOT_PASSWORD: 123
     ports:
       - 3306:3306

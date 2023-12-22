@@ -1,16 +1,11 @@
-import {
-  IsNotEmpty,
-  IsString,
-  MaxLength,
-  IsStrongPassword,
-} from 'class-validator';
+import { IsNotEmpty, IsString, MaxLength } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
 
 export class SignInDto {
   @IsString()
   @IsNotEmpty()
   @MaxLength(100)
-  username!: string;
+  email!: string;
 
   @IsString()
   @IsNotEmpty()
@@ -26,7 +21,7 @@ export class SignInResDto {
   fullName!: string;
 
   @Expose()
-  username!: string;
+  email!: string;
 
   @Expose()
   accessToken!: string;

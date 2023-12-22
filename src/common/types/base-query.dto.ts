@@ -5,12 +5,12 @@ export class BaseQueryDto {
   @IsOptional()
   @Min(1)
   @Type(() => Number)
-  pageIndex?: number;
+  pageIndex?: number = 1;
 
   @IsOptional()
   @Min(1)
   @Type(() => Number)
-  pageSize?: number;
+  pageSize?: number = 10;
 
   get offset(): number | undefined {
     if (!this.pageIndex || !this.pageSize) {

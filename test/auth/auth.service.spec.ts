@@ -37,10 +37,10 @@ describe('AuthService', () => {
 
   describe('SignIn', () => {
     it('Should sign-in successful', async () => {
-      const username = 'test@gmail.com';
+      const email = 'test@gmail.com';
       const password = '123';
       const fakeUser = fakeUserData({
-        username,
+        email,
         password,
       });
       const mockGetUser = jest
@@ -57,13 +57,13 @@ describe('AuthService', () => {
         .mockImplementation(async () => fakeToken);
 
       const result = await authService.signIn({
-        username,
+        email,
         password,
       });
 
       expect(mockGetUser).toBeCalled();
       expect(mockGetUser).toBeCalledWith({
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
       });
       expect(mockComparePassword).toBeCalled();
       expect(mockGetAccessToken).toBeCalled();
@@ -71,7 +71,7 @@ describe('AuthService', () => {
       expect(result.fullName).toEqual(
         `${fakeUser.firstName} ${fakeUser.lastName}`,
       );
-      expect(result.username).toEqual(username);
+      expect(result.email).toEqual(email);
     });
 
     it('Should throw error user does not exist', async () => {
@@ -81,24 +81,24 @@ describe('AuthService', () => {
 
       await authService
         .signIn({
-          username: 'test@gmail.com',
+          email: 'test@gmail.com',
           password: '123',
         })
         .catch((error) => {
-          expect(error.message).toEqual('Username does not exist');
+          expect(error.message).toEqual('email does not exist');
           expect(error).toBeInstanceOf(BadRequestException);
         });
       expect(mockGetUser).toBeCalled();
       expect(mockGetUser).toBeCalledWith({
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
       });
     });
 
     it('Should throw error when password not match', async () => {
-      const username = 'test@gmail.com';
+      const email = 'test@gmail.com';
       const password = '123';
       const fakeUser = fakeUserData({
-        username,
+        email,
         password,
       });
       const mockGetUser = jest
@@ -110,7 +110,7 @@ describe('AuthService', () => {
         .mockImplementation(() => false);
       await authService
         .signIn({
-          username: 'test@gmail.com',
+          email: 'test@gmail.com',
           password: '123',
         })
         .catch((error) => {
@@ -120,7 +120,7 @@ describe('AuthService', () => {
       expect(mockComparePassword).toBeCalled();
       expect(mockGetUser).toBeCalled();
       expect(mockGetUser).toBeCalledWith({
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
       });
     });
   });
@@ -144,19 +144,19 @@ describe('AuthService', () => {
       const result = await authService.signUp({
         firstName: 'trung',
         lastName: 'hoang',
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
         password: '123',
       });
 
       expect(mockGetUser).toBeCalled();
       expect(mockGetUser).toBeCalledWith({
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
       });
       expect(mockHashPassword).toBeCalled();
       expect(mockGetAccessToken).toBeCalled();
       expect(result.accessToken).toEqual(fakeToken);
       expect(result.fullName).toEqual('trung hoang');
-      expect(result.username).toEqual('test@gmail.com');
+      expect(result.email).toEqual('test@gmail.com');
     });
 
     it('Should throw error user already exist', async () => {
@@ -168,7 +168,7 @@ describe('AuthService', () => {
         .signUp({
           firstName: 'trung',
           lastName: 'hoang',
-          username: 'test@gmail.com',
+          email: 'test@gmail.com',
           password: '123',
         })
         .catch((error) => {
@@ -177,7 +177,7 @@ describe('AuthService', () => {
         });
       expect(mockGetUser).toBeCalled();
       expect(mockGetUser).toBeCalledWith({
-        username: 'test@gmail.com',
+        email: 'test@gmail.com',
       });
     });
   });

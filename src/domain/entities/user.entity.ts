@@ -13,6 +13,9 @@ export class User extends BaseEntity {
   userId!: string;
 
   @Column({ type: 'varchar', nullable: false, length: 50 })
+  code!: string;
+
+  @Column({ type: 'varchar', nullable: false, length: 50 })
   firstName!: string;
 
   @Column({ type: 'varchar', nullable: false, length: 50 })
@@ -20,7 +23,7 @@ export class User extends BaseEntity {
 
   @Column({ type: 'varchar', nullable: false, length: 100 })
   @Index()
-  username!: string;
+  email!: string;
 
   @Column({ type: 'varchar', nullable: false, length: 500 })
   password!: string;

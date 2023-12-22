@@ -20,9 +20,12 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "db:gen": "cd migrations/scripts && ts-node ../../node_modules/typeorm/cli migration:generate -d ../index.ts",
     "db:run": "cd migrations/scripts && ts-node ../../node_modules/typeorm/cli migration:run -d ../index.ts",
-    "db:revert": "cd migrations/scripts && ts-node ../../node_modules/typeorm/cli migration:revert -d ../index.ts"
+    "db:revert": "cd migrations/scripts && ts-node ../../node_modules/typeorm/cli migration:revert -d ../index.ts",
+    "seed:gen": "cd seeds/scripts && ts-node ../../node_modules/typeorm/cli migration:create -t ../index.ts",
+    "seed:run": "cd seeds/scripts && ts-node ../../node_modules/typeorm/cli migration:run -d ../index.ts"
   },
   "dependencies": {
+    "@faker-js/faker": "^8.3.1",
     "@nestjs/common": "^9.0.0",
     "@nestjs/config": "^3.1.1",
     "@nestjs/core": "^9.0.0",

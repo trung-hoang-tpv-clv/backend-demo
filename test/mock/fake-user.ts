@@ -6,7 +6,7 @@ export const fakeUserData = (override?: Partial<User>): User => ({
   firstName: 'trung',
   lastName: 'hoang',
   password: '123',
-  username: 'test@gmail.com',
+  email: 'test@gmail.com',
   createdAt: new Date(),
   updatedAt: new Date(),
   isDeleted: false,

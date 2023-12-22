@@ -34,7 +34,7 @@ describe('AuthController', () => {
 
   describe('SignIn', () => {
     it('Should sign-in successful', async () => {
-      const username = 'test@gmail.com';
+      const email = 'test@gmail.com';
       const password = '123';
 
       const mockSignIn = jest.spyOn(authService, 'signIn').mockImplementation(
@@ -42,29 +42,29 @@ describe('AuthController', () => {
           userId: '123',
           accessToken: 'token',
           fullName: 'trung hoang',
-          username,
+          email,
         }),
       );
 
       const result = await authController.signIn({
-        username,
+        email,
         password,
       });
 
       expect(mockSignIn).toBeCalled();
       expect(mockSignIn).toBeCalledWith({
-        username,
+        email,
         password,
       });
       expect(result.accessToken).toEqual('token');
       expect(result.fullName).toEqual('trung hoang');
-      expect(result.username).toEqual(username);
+      expect(result.email).toEqual(email);
     });
   });
 
   describe('SignUp', () => {
     it('Should sign-up successful', async () => {
-      const username = 'test@gmail.com';
+      const email = 'test@gmail.com';
       const password = '123';
 
       const mockSignUp = jest.spyOn(authService, 'signUp').mockImplementation(
@@ -72,27 +72,27 @@ describe('AuthController', () => {
           userId: '123',
           accessToken: 'token',
           fullName: 'trung hoang',
-          username,
+          email,
         }),
       );
 
       const result = await authController.signUp({
-        username,
+        email,
         password,
-        firstName: "trung",
-        lastName: "hoang",
+        firstName: 'trung',
+        lastName: 'hoang',
       });
 
       expect(mockSignUp).toBeCalled();
       expect(mockSignUp).toBeCalledWith({
-        username,
+        email,
         password,
-        firstName: "trung",
-        lastName: "hoang",
+        firstName: 'trung',
+        lastName: 'hoang',
       });
       expect(result.accessToken).toEqual('token');
       expect(result.fullName).toEqual('trung hoang');
-      expect(result.username).toEqual(username);
+      expect(result.email).toEqual(email);
     });
   });
 });

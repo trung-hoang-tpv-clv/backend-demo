@@ -8,6 +8,7 @@ import { NestModule } from '@nestjs/common';
 import { MiddlewareConsumer } from '@nestjs/common';
 import { LoggerMiddleware } from './common/middleware';
 import { AuthModule } from './modules/auth/auth.module';
+import { SalesTransactionModule } from './modules/sales-transaction/sales-transaction.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { AuthModule } from './modules/auth/auth.module';
       inject: [ConfigService],
     }),
     AuthModule,
+    SalesTransactionModule,
   ],
   controllers: [],
   providers: [],

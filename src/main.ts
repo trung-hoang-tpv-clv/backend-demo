@@ -24,6 +24,14 @@ async function bootstrap() {
     .setDescription(pkDescription)
     .setVersion(pkVersion)
     .addTag(pkName, pkDescription)
+    .addBearerAuth({
+      type: 'http',
+      scheme: 'bearer',
+      bearerFormat: 'JWT',
+      name: 'JWT',
+      description: 'Enter JWT token',
+      in: 'header',
+    })
     .build();
 
   const document = SwaggerModule.createDocument(app, options);
