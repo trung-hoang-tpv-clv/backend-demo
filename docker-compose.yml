@@ -7,8 +7,6 @@ services:
     container_name: mysql_db
     restart: always
     environment:
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123
       MYSQL_DATABASE: backend_demo
       MYSQL_ROOT_PASSWORD: 123
     ports:
@@ -24,4 +22,4 @@ services:
     ports:
       - "3001:3001"
     links:
-     - "mysql_db"
+     - "mysql_db2"

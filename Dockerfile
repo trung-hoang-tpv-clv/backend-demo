@@ -14,4 +14,4 @@ COPY --from=fromBuilder /app/dist /home/app/dist
 COPY --from=fromBuilder /app/package.json /home/app/package.json
 COPY --from=fromBuilder /app/node_modules /home/app/node_modules
 
-CMD [ "node", "./dist/apps/src/main.js" ]
+CMD [ "node", "dist/src/main.js" ]

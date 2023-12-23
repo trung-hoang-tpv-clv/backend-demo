@@ -31,11 +31,25 @@
 ```bash
 $ yarn install
 ```
+
+## Setup database
+
+```bash
+# development
+$ docker-compose up -d mysql_db
+```
 ## Run migration
 
 ```bash
 # development
 $ yarn run db:run
+```
+
+## Run Seed
+
+```bash
+# development
+$ yarn run db:seed
 ```
 ## Running the app
 
